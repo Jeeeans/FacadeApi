@@ -1,0 +1,86 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: facade-api
+  namespace: athena-dev
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: facade-api
+      app.kubernetes.io/component: server
+  replicas: 1
+  minReadySeconds: 0
+  strategy:
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: facade-api
+        app.kubernetes.io/component: server
+      annotations:
+        prometheus.io/port: '9090'
+        prometheus.io/scrape: 'true'
+        prometheus.io/path: '/metrics'
+        co.elastic.logs/enabled: 'true'
+        co.elastic.logs/fileset.stderr: error
+        co.elastic.logs/fileset.stdout: log
+        co.elastic.logs/module: mustit
+    spec:
+      containers:
+        - name: facade-api
+          image: 997347119519.dkr.ecr.ap-northeast-2.amazonaws.com/athena/facade-api:20210504120814-e65bb8c
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: NODE_ENV
+              value: development
+            - name: PORT
+              value: '8080'
+            - name: MEMBER_API_URL
+              value: 'http://member-api.athena-dev.svc.cluster.local'
+            - name: HOME_API_URL
+              value: 'http://home-api.athena-dev.svc.cluster.local'
+            - name: MUSTIT_SERVICE_API_URL
+              value: 'http://www-release.www-dev.svc.cluster.local:8080'
+            - name:  MUSTIT_SERVICE_MOBILE_LANDING_URL
+              value: "https://release.mustit.xyz"
+            - name: MOBILE_LANDING_URL
+              value: "https://release.mustit.xyz"
+            - name: METRICS_PORT
+              value: '9090'
+            - name: SEARCH_API_URL
+              value: 'http://search-api.athena-dev.svc.cluster.local'
+          ports:
+            - containerPort: 8080
+            - containerPort: 9090
+          resources:
+            requests:
+              memory: '64Mi'
+            limits:
+              memory: '128Mi'
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 9090
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            failureThreshold: 1
+            successThreshold: 1
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 9090
+            initialDelaySeconds: 10
+            # Allow sufficient amount of time (180 seconds = periodSeconds * failureThreshold)
+            # for the registered shutdown handlers to run to completion.
+            periodSeconds: 30
+            failureThreshold: 3
+            successThreshold: 1
+          lifecycle:
+            preStop:
+              exec:
+                command: ['/bin/bash', '-c', 'sleep 10']
+      nodeSelector:
+        eks.amazonaws.com/nodegroup: mustit-dev-web-private-nodegroup
