@@ -7,6 +7,7 @@ import {
 } from '../../error/forbidden.error';
 import { HomeService } from './home.service';
 
+
 @Route('v1/home')
 export class HomeController extends Controller {
   private homeService: HomeService;
