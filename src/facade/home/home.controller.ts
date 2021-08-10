@@ -1,11 +1,11 @@
 import Koa from 'koa';
 import {Route, Get, Controller, Request } from 'tsoa';
-import {HomeService} from '../service/home.service';
 import {
   ForbiddenReasonType,
   ForbiddenActionType,
   ForbiddenError,
-} from '../error/forbidden.error';
+} from '../../error/forbidden.error';
+import { HomeService } from './home.service';
 
 @Route('v1/home')
 export class HomeController extends Controller {
@@ -19,7 +19,7 @@ export class HomeController extends Controller {
   @Get('/main')
   async getHomeMain(@Request() request: Koa.Request) {    
     
-    const version = request.ctx.userAgent?.version
+    const version = request.ctx.userAgent?.version ?? "1.0.0"
 
     return this.homeService
     .setUserContext(request.ctx.userContext)
@@ -37,10 +37,4 @@ export class HomeController extends Controller {
       );
     }
   }
-
-  @Get('/popup')
-  async getPopup() {
-    return this.homeService.getPopupSlotAll()
-  }
-
 }
