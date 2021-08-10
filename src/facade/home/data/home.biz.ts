@@ -1,5 +1,5 @@
+import { ModuleModel } from "../../../common/data/module.dto";
 
-
-interface HomeBizResponse {
-
+export interface HomeBizResponse {
+  moduleList: [ModuleModel]
 }

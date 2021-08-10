@@ -1,0 +1,87 @@
+{
+  "moduleList" :
+  [
+    {
+      "data": {
+        "title": "",
+        "list": [
+          {
+            "imageUrl" : "",
+            "landingUrl" : "",
+            "title" : "",
+            "description" : ""
+          },
+          {
+            "imageUrl" : "",
+            "landingUrl" : "",
+            "title" : "",
+            "description" : ""
+          },
+          {
+            "imageUrl" : "",
+            "landingUrl" : "",
+            "title" : "",
+            "description" : ""
+          },
+          {
+            "imageUrl" : "",
+            "landingUrl" : "",
+            "title" : "",
+            "description" : ""
+          }
+        ]
+      },
+      "type": "BigBannerList"
+    },
+    {
+      "data": {
+        "imageUrl" : "",
+        "landingUrl" : "",
+        "title" : "",
+        "description" : ""
+      },
+      "type": "BigBanner"
+    },
+    {
+      "data": {
+        "imageUrl" : "",
+        "landingUrl" : "",
+        "title" : "",
+        "description" : ""
+      },
+      "type": "MediumBanner"
+    },
+    {
+      "data": {
+        "title":"",
+        "list" : [
+          {
+            "imageUrl" : "",
+            "landingUrl" : "",
+            "title" : "",
+            "description" : ""
+          },
+          {
+            "imageUrl" : "",
+            "landingUrl" : "",
+            "title" : "",
+            "description" : ""
+          },
+          {
+            "imageUrl" : "",
+            "landingUrl" : "",
+            "title" : "",
+            "description" : ""
+          },
+          {
+            "imageUrl" : "",
+            "landingUrl" : "",
+            "title" : "",
+            "description" : ""
+          }
+        ]
+      },
+      "type": "SmallContentsList"
+    }
+  ]
+}
