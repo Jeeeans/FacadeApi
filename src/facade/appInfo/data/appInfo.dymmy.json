@@ -1,0 +1,47 @@
+{
+  "isForceUpdate": false,
+  "isLottieSplash": false,
+  "splashImageUrl": "",
+  "tabList" : [
+    {
+      "title": "투데이",
+      "imageUrl": "",
+      "selectedImageUrl": "",
+      "textColor":  "",
+      "selectedTextColor": "",
+      "apiUrl": ""
+    },
+    {
+      "title": "테스트",
+      "imageUrl": "",
+      "selectedImageUrl": "",
+      "textColor":  "",
+      "selectedTextColor": "",
+      "apiUrl": ""
+    },
+    {
+      "title": "테스트",
+      "imageUrl": "",
+      "selectedImageUrl": "",
+      "textColor":  "",
+      "selectedTextColor": "",
+      "apiUrl": ""
+    },
+    {
+      "title": "테스트",
+      "imageUrl": "",
+      "selectedImageUrl": "",
+      "textColor":  "",
+      "selectedTextColor": "",
+      "apiUrl": ""
+    },
+    {
+      "title": "검색",
+      "imageUrl": "",
+      "selectedImageUrl": "",
+      "textColor":  "",
+      "selectedTextColor": "",
+      "apiUrl": ""
+    }
+  ]
+}

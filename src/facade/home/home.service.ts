@@ -21,6 +21,7 @@ export class HomeService extends Service {
           const bigBannerList = module.data as BigBannerListBiz
           model = this.convertBigBannerList(bigBannerList)
           break
+          
         case ModuleType.BigBanner:
           const bigBanner = module.data as BigBannerBiz
           model = this.convertBigBanner(bigBanner)
@@ -30,9 +31,12 @@ export class HomeService extends Service {
           const mediumBanner = module.data as MediumBannerBiz
           model = this.convertMediumBanner(mediumBanner)
           break
+
         case ModuleType.SmallContentsList:
           const smallContentList = module.data as SmallContentListBiz
           model = this.convertSmallContentList(smallContentList)
+          break
+
         default:
           model = new ModuleData()
           break

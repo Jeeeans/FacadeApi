@@ -8,11 +8,14 @@ export class AppInfoService extends Service {
   private client = new AppInfoClient()
 
 
-  getAppInfo(version: string) {
+  async getAppInfo(version: string) {
+    var appInfo = await this.client.getAppInfo()
+
     return new AppInfoModel(
-      false,
-      false,
-      ""
+      appInfo.isForceUpdate,
+      appInfo.isLottieSplash,
+      appInfo.splashImageUrl,
+      appInfo.tabList
     )
   }
 }
